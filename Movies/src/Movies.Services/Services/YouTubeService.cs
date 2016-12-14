@@ -5,7 +5,7 @@ namespace Movies.Services.Services
     {
         public string GetTrailerVideoUrl(string movieTitle)
         {
-            return "https://www.youtube.com/watch?v=7RYpJAUMo2M"; //Rocky
+            return "https://www.youtube.com/embed/3ycmmJ6rxA8"; //ToDo: Get from Api
         }
     }
 }
