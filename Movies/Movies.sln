@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Movies.Web", "src\Movies\Movies.Web.xproj", "{5E036999-A15E-45F5-8F40-1DBF69908072}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Movies.Domain", "src\Movies.Domain\Movies.Domain.xproj", "{A115F5DC-27FE-410F-8B7D-E83862EED63D}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Movies.Services", "src\Movies.Services\Movies.Services.xproj", "{EFE23CE6-2D64-44E4-94D5-54B66436BA85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +26,21 @@ Global
 		{5E036999-A15E-45F5-8F40-1DBF69908072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E036999-A15E-45F5-8F40-1DBF69908072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E036999-A15E-45F5-8F40-1DBF69908072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A115F5DC-27FE-410F-8B7D-E83862EED63D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A115F5DC-27FE-410F-8B7D-E83862EED63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A115F5DC-27FE-410F-8B7D-E83862EED63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A115F5DC-27FE-410F-8B7D-E83862EED63D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFE23CE6-2D64-44E4-94D5-54B66436BA85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE23CE6-2D64-44E4-94D5-54B66436BA85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE23CE6-2D64-44E4-94D5-54B66436BA85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE23CE6-2D64-44E4-94D5-54B66436BA85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5E036999-A15E-45F5-8F40-1DBF69908072} = {4D1A4D7E-9926-4122-A7D1-B5E09AD0B840}
+		{A115F5DC-27FE-410F-8B7D-E83862EED63D} = {4D1A4D7E-9926-4122-A7D1-B5E09AD0B840}
+		{EFE23CE6-2D64-44E4-94D5-54B66436BA85} = {4D1A4D7E-9926-4122-A7D1-B5E09AD0B840}
 	EndGlobalSection
 EndGlobal
