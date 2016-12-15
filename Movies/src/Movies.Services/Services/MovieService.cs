@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
 using Movies.Domain;
 using Movies.Data.Repositories;
+using System.Threading.Tasks;
 
 namespace Movies.Services.Services
 {
     public class MovieService : IMovieService
     {
-        private readonly IVideoProviderService _videoProviderService;
         private readonly IMovieRepository _movieRepository;
 
-        public MovieService(IVideoProviderService videoProviderService, IMovieRepository movieRepository)
+        public MovieService(IMovieRepository movieRepository)
         {
-            _videoProviderService = videoProviderService;
             _movieRepository = movieRepository;
         }
 
@@ -52,9 +51,12 @@ namespace Movies.Services.Services
             return movie;
         }
 
-        public void Update(Movie movie)
+        public Task Update(Movie movie)
         {
-            _movieRepository.Update(movie);
+            return Task.Run(() => 
+            {
+                _movieRepository.Update(movie);
+            });
         }
     }
 

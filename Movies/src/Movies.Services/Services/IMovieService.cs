@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Movies.Domain;
+using System.Threading.Tasks;
 
 namespace Movies.Services.Services
 {
@@ -7,6 +8,6 @@ namespace Movies.Services.Services
     {
         IEnumerable<Movie> GetAll();
         Movie Get(string title);
-        void Update(Movie movie);
+        Task Update(Movie movie);
     }
 }
