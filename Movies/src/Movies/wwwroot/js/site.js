@@ -23,6 +23,8 @@ $(function () {
                     $(button).hide();
                 }
             }
+
+            //ToDo: on error show error message, don't allow to click button once more
         });
     });
 });

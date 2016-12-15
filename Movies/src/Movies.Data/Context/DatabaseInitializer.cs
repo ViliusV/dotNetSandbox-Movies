@@ -1,8 +1,5 @@
 ﻿using Movies.Domain;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Movies.Data
 {
@@ -10,7 +7,6 @@ namespace Movies.Data
     {
         public static void Initialize(MoviesContext context)
         {
-            context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
             if (context.Movies.Any())

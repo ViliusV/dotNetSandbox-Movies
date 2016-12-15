@@ -19,14 +19,10 @@ namespace Movies.Services.Services
         {
             var movies = _movieRepository.GetAll();
 
-            foreach (var movie in movies)
-            {
-                movie.TrailerVideoId = _videoProviderService?.GetTrailerVideoId(movie.Title); //ToDo: Save trailer video url in DB
-            }
-
             return movies;
         }
 
+        //ToDo: use it somewhere
         public string GetBestMovieFromGenre(string genre)
         {
             var genres = new Dictionary<string, string>()
@@ -48,6 +44,17 @@ namespace Movies.Services.Services
             }
 
             return null;
+        }
+
+        public Movie Get(string title)
+        {
+            var movie = _movieRepository.Get(title);
+            return movie;
+        }
+
+        public void Update(Movie movie)
+        {
+            _movieRepository.Update(movie);
         }
     }
 

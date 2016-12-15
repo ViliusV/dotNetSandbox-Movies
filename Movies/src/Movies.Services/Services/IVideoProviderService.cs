@@ -1,7 +1,9 @@
-﻿namespace Movies.Services.Services
+﻿using System.Threading.Tasks;
+
+namespace Movies.Services.Services
 {
     public interface IVideoProviderService
     {
-        string GetTrailerVideoId(string movieTitle);
+        Task<string> GetTrailerVideoId(string movieTitle);
     }
 }

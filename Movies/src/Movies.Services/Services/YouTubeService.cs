@@ -1,14 +1,13 @@
 ﻿using Google.Apis.Services;
 using System.Linq;
+using System.Threading.Tasks;
 using YouTubeApiService = Google.Apis.YouTube.v3.YouTubeService;
 
 namespace Movies.Services.Services
 {
     public class YouTubeService : IVideoProviderService
     {
-
-
-        public string GetTrailerVideoId(string movieTitle)
+        public async Task<string> GetTrailerVideoId(string movieTitle)
         {
             if (string.IsNullOrEmpty(movieTitle))
             {
@@ -21,7 +20,8 @@ namespace Movies.Services.Services
             searchRequest.Q = $"{movieTitle} trailer";
             searchRequest.MaxResults = 1;
 
-            var searchResponse = searchRequest.Execute(); //ToDo: use await
+            var searchTask = searchRequest.ExecuteAsync();
+            var searchResponse = await searchTask;
 
             var videoId = searchResponse.Items?.FirstOrDefault()?.Id?.VideoId;
 
