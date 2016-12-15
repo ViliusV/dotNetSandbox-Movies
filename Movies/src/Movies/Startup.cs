@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Movies.Services.Services;
+using Movies.Data;
+using Microsoft.EntityFrameworkCore;
+using Movies.Data.Repositories;
 
 namespace Movies
 {
@@ -28,7 +27,14 @@ namespace Movies
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Registering context
+            services.AddDbContext<MoviesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             // Dependency injection
+            //Repositories
+            services.AddTransient<IMovieRepository, IMovieRepository>();
+
+            //Services
             services.AddTransient<IMovieService, MovieService>();
             services.AddTransient<IVideoProviderService, YouTubeService>();
 
@@ -37,7 +43,7 @@ namespace Movies
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, MoviesContext context)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -60,6 +66,8 @@ namespace Movies
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            DatabaseInitializer.Initialize(context);
         }
     }
 }

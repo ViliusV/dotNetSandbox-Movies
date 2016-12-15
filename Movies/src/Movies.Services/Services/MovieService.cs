@@ -1,25 +1,23 @@
 ﻿using System.Collections.Generic;
 using Movies.Domain;
+using Movies.Data.Repositories;
 
 namespace Movies.Services.Services
 {
     public class MovieService : IMovieService
     {
         private readonly IVideoProviderService _videoProviderService;
+        private readonly IMovieRepository _movieRepository;
 
-        public MovieService(IVideoProviderService videoProviderService)
+        public MovieService(IVideoProviderService videoProviderService, IMovieRepository movieRepository)
         {
             _videoProviderService = videoProviderService;
+            _movieRepository = movieRepository;
         }
 
         public IEnumerable<Movie> GetAll()
         {
-            var movies = new List<Movie>
-            {
-                new Movie {Title = "Godfather" },
-                new Movie {Title = "Lord of the Rings" },
-                new Movie {Title = "A Life of Brian" }
-            };
+            var movies = _movieRepository.GetAll();
 
             foreach (var movie in movies)
             {
@@ -35,7 +33,7 @@ namespace Movies.Services.Services
             {
                 ["crime"] = "Godfather",
                 ["fantasy"] = "Lord of the Rings",
-                ["comedy"] = "A Life of Brian"
+                ["comedy"] = "Monty Python's Life of Brian"
             };
 
             if (string.IsNullOrEmpty(genre))

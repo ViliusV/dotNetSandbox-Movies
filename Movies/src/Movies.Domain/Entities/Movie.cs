@@ -1,6 +1,8 @@
-﻿namespace Movies.Domain
+﻿using Movies.Domain.Entities;
+
+namespace Movies.Domain
 {
-    public class Movie
+    public class Movie : Entity
     {
         public string Title { get; set; }
 
