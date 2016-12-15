@@ -32,7 +32,7 @@ namespace Movies
 
             // Dependency injection
             //Repositories
-            services.AddTransient<IMovieRepository, IMovieRepository>();
+            services.AddTransient<IMovieRepository, MovieRepository>();
 
             //Services
             services.AddTransient<IMovieService, MovieService>();
