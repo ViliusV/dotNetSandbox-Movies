@@ -8,8 +8,13 @@ namespace Movies.Services.Services
     {
 
 
-        public string GetTrailerVideoUrl(string movieTitle)
+        public string GetTrailerVideoId(string movieTitle)
         {
+            if (string.IsNullOrEmpty(movieTitle))
+            {
+                return null;
+            }
+
             //ToDo: store api key in config
             var service = new YouTubeApiService(new BaseClientService.Initializer() { ApiKey = "AIzaSyBCKvubbI7mGVNNjHV_sPpk_sho-Jsa_JQ" });
             var searchRequest = service.Search.List("snippet");
@@ -18,9 +23,9 @@ namespace Movies.Services.Services
 
             var searchResponse = searchRequest.Execute(); //ToDo: use await
 
-            var videoUrl = searchResponse.Items?.FirstOrDefault()?.Id?.VideoId;
+            var videoId = searchResponse.Items?.FirstOrDefault()?.Id?.VideoId;
 
-            return videoUrl;
+            return videoId;
         }
     }
 }

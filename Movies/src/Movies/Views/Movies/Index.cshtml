@@ -6,10 +6,15 @@
         <h1>Movies</h1>
         @foreach(var movie in Model)
         {
-            <div>
+            <div class="movie" data-title="@movie.Title">
                 <h2>@movie.Title</h2>
-                <div>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/@movie.TrailerVideoUrl"  frameborder="0" ></iframe>
+                <div class="trailer">
+                    <button class="trailer-load-button glyphicon glyphicon-play btn-lg btn-success">
+                        Load trailer
+                    </button>
+                    <div class="trailer-video">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/" frameborder="0"></iframe>
+                    </div>
                 </div>
             </div>
         }

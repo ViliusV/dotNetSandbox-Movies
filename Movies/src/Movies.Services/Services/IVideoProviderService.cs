@@ -2,6 +2,6 @@
 {
     public interface IVideoProviderService
     {
-        string GetTrailerVideoUrl(string movieTitle);
+        string GetTrailerVideoId(string movieTitle);
     }
 }

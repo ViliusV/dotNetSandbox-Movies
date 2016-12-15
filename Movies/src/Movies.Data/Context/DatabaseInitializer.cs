@@ -10,6 +10,7 @@ namespace Movies.Data
     {
         public static void Initialize(MoviesContext context)
         {
+            context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
             if (context.Movies.Any())

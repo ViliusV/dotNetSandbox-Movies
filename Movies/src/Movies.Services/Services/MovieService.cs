@@ -21,7 +21,7 @@ namespace Movies.Services.Services
 
             foreach (var movie in movies)
             {
-                movie.TrailerVideoUrl = _videoProviderService?.GetTrailerVideoUrl(movie.Title);
+                movie.TrailerVideoId = _videoProviderService?.GetTrailerVideoId(movie.Title); //ToDo: Save trailer video url in DB
             }
 
             return movies;

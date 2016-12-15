@@ -6,7 +6,7 @@ namespace Movies.Domain
     {
         public string Title { get; set; }
 
-        public string TrailerVideoUrl { get; set; }
+        public string TrailerVideoId { get; set; }
 
         public string Country { get; set; } = "N/A";
 
