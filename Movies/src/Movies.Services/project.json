@@ -2,6 +2,8 @@
   "version": "1.0.0-*",
 
   "dependencies": {
+    "Google.Apis": "1.20.0",
+    "Google.Apis.YouTube.v3": "1.20.0.701",
     "Movies.Data": "1.0.0-*",
     "Movies.Domain": "1.0.0-*",
     "NETStandard.Library": "1.6.1"
