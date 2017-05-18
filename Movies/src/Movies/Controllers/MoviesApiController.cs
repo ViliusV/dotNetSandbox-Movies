@@ -5,31 +5,40 @@ using Movies.Services.Services;
 
 namespace Movies.Controllers
 {
-    [Route("api/[controller]")]
-    public class MoviesApiController : Controller
-    {
-        private readonly IVideoProviderService _videoProviderService;
+	[Route("api/[controller]")]
+	public class MoviesApiController : Controller
+	{
+		private readonly IVideoProviderService _videoProviderService;
+		private readonly IMovieService _movieService;
 
-        public MoviesApiController(IVideoProviderService videoProviderService)
-        {
-            _videoProviderService = videoProviderService;
-        }
+		public MoviesApiController(IVideoProviderService videoProviderService, IMovieService movieService)
+		{
+			_videoProviderService = videoProviderService;
+			_movieService = movieService;
+		}
 
-        [HttpGet]
-        [Route(nameof(Test))]
-        public IActionResult Test()
-        {
-            return Ok(nameof(MoviesApiController));
-        }
+		[HttpGet]
+		[Route(nameof(Test))]
+		public IActionResult Test()
+		{
+			return Ok(nameof(MoviesApiController));
+		}
 
-        [HttpGet()]
-        [Route(nameof(GetTrailerVideoId))]
-        public IActionResult GetTrailerVideoId([FromQuery]string title)
-        {
-            var task = _videoProviderService.GetTrailerVideoId(title);
-            var videoId = task.Result;
+		[HttpGet]
+		public IActionResult Get()
+		{
+			var movies = _movieService.GetAll();
+			return Ok(movies);
+		}
 
-            return Ok(videoId);
-        }
-    }
+		[HttpGet()]
+		[Route(nameof(GetTrailerVideoId))]
+		public IActionResult GetTrailerVideoId([FromQuery]string title)
+		{
+			var task = _videoProviderService.GetTrailerVideoId(title);
+			var videoId = task.Result;
+
+			return Ok(videoId);
+		}
+	}
 }
