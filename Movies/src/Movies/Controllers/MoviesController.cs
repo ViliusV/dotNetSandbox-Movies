@@ -14,12 +14,9 @@ namespace Movies.Controllers
             _movieService = movieService;
         }
 
-        // GET: /<controller>/
         public IActionResult Index()
         {
-            var movies = _movieService?.GetAll();
-
-            return View(movies);
+            return View();
         }
     }
 }

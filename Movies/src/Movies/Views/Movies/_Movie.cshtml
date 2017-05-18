@@ -1,5 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@*ToDo: Add mobile friendly classes*@
+<script id="movie-template" type="text/x-handlebars-template">
+	<div class="movie" data-id="{{id}}" data-title="{{title}}">
+		<h2>{{title}}</h2>
+		<div class="trailer">
+			<button class="trailer-load-button glyphicon glyphicon-play btn-lg btn-success">
+				Load trailer
+			</button>
+			<div class="trailer-video">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/" frameborder="0"></iframe>
+			</div>
+		</div>
+	</div>
+</script>

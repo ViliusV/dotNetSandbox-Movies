@@ -1,25 +1,8 @@
-﻿@model IEnumerable<Movies.Domain.Movie>
-
-<div>
-    @if (Model != null && Model.Any())
-    {
+﻿<div>
         <h1>Movies</h1>
-        @foreach(var movie in Model)
-        {
-            @*ToDo: Add mobile friendly classes*@
-            <div class="movie" data-title="@movie.Title">
-                <h2>@movie.Title</h2>
-                <div class="trailer">
-                    <button class="trailer-load-button glyphicon glyphicon-play btn-lg btn-success">
-                        Load trailer
-                    </button>
-                    <div class="trailer-video">
-                        @*ToDo: Don't load on page load, use Handlebars for adding the video html*@
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/" frameborder="0"></iframe>
-                    </div>
-                </div>
-            </div>
-        }
+		<div class="movies-container">
 
-    }
+		</div>
+
+		@Html.Partial("_Movie.cshtml")
 </div>
