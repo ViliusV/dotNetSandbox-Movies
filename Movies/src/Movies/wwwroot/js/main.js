@@ -9,7 +9,7 @@ let MoviesCollection = function (movies) {
 
 //Adding function to prototype, so it would be stored in one place instead of storing it in each MoviesCollection object
 MoviesCollection.prototype.get = function (id) {
-	for (let i = 0; i < this.Movies.length; i++) {
+	for (let i = 0, moviesLength = this.Movies.length; i < moviesLength; i++) {
 		if (this.Movies[i].id === id) {
 			return this.Movies[id];
 		}
@@ -55,8 +55,9 @@ $(function () {
 				if (data !== undefined && data !== null && data.length > 0) {
 					let movies = [];
 					collection = new MoviesCollection(movies);
-					for (let id = 0; id < data.length; id++) {
-						let movie = new Movie(data[id].id, data[id].title, data[id].trailerVideoId);
+					for (let id = 0, dataLength = data.length; id < dataLength; id++) {
+						let movieEntity = data[id];
+						let movie = new Movie(movieEntity.id, movieEntity.title, movieEntity.trailerVideoId);
 						movies.push(movie); 
 						//Handlebars could be called directly here with each data[id].
 						//Creating a collection object is just for educational reasons to better understand how prototyping works
@@ -80,7 +81,7 @@ let appendMovies = function () {
 	let template = Handlebars.compile(templateSource);
 
 	//collection.movies all has the movies, because it contains a reference to movies variable, check if it's not emptied after exiting ajax call
-	for (let id = 0; id < collection.movies.length; id++) {
+	for (let id = 0, moviesCollectionLegnth = collection.movies.length; id < moviesCollectionLegnth; id++) {
 		let movieHtml = $(template(collection.movies[id]));
 
 		//This allows to attache event listener, before adding element to DOM
