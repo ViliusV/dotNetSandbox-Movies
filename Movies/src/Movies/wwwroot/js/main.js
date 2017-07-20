@@ -76,6 +76,7 @@ $(function () {
 
 let appendMovies = function () {
 	let moviesContainer = $('.movies-container');
+	let moviesFragment = $(document.createDocumentFragment());
 	moviesContainer.empty();
 	let templateSource = $("#movie-template").html();
 	let template = Handlebars.compile(templateSource);
@@ -89,8 +90,10 @@ let appendMovies = function () {
 			loadButtonClick(this);
 		});
 
-		moviesContainer.append(movieHtml);
+		moviesFragment.append(movieHtml);
 	}
+
+	moviesContainer.append(moviesFragment);
 }
 
 let loadButtonClick = function (button) {
@@ -116,16 +119,16 @@ let loadButtonClick = function (button) {
 }
 
 
-	let  appendVideo = function (movieElement, id) {
-		let movieElementExists = typeof movieElement !== "undefined" && movieElement !== null;
-		let idExists = typeof id !== "undefined" && id !== null;
+let  appendVideo = function (movieElement, id) {
+	let movieElementExists = typeof movieElement !== "undefined" && movieElement !== null;
+	let idExists = typeof id !== "undefined" && id !== null;
 
-		if (movieElementExists && idExists) {
-			let trailerVideo = movieElement.find('.trailer-video');
-			let trailerVideoIframe = movieElement.find('.trailer-video iframe');
-			let source = $(trailerVideoIframe).prop('src') + id;
+	if (movieElementExists && idExists) {
+		let trailerVideo = movieElement.find('.trailer-video');
+		let trailerVideoIframe = movieElement.find('.trailer-video iframe');
+		let source = $(trailerVideoIframe).prop('src') + id;
 
-			$(trailerVideoIframe).prop('src', source);
-			$(trailerVideo).show();
-		}
-	};
+		$(trailerVideoIframe).prop('src', source);
+		$(trailerVideo).show();
+	}
+};
